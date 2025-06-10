@@ -29,11 +29,12 @@ sayHello() // l'appel de fonction permet de re afficher "Bonjour Beyonce !"
 // j'ai bien réussi le faire de cette façon mais je n'ai pas réutiliser les variables définies plus haut
 function sayHello(name, hour){
     if (hour < 18 ){
-        console.log(`Bonjour ${name} !`)
+        document.querySelector('h1').innerText =`Bonjour ${name} !`
     }  else {
-        console.log(`Bonsoir ${name} !`)
+        document.querySelector('h1').innerText =`Bonsoir ${name} !`
     }
 }
+
 
 sayHello("Beyonce", 11)
 sayHello(`Beyonce`, 18)
