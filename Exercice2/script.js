@@ -5,6 +5,10 @@ function chooseANumber(){
     return prompt("Choisissez un nombre")
 }
 
+function chooseTheAnswer(){
+    return prompt("Choisissez le nombre à faire deviner")
+}
+
 //let givenNumber = parseInt(chooseANumber()) --> on change la position dans gamePlay()
 
 
@@ -15,26 +19,28 @@ function chooseANumber(){
 //          Dans la fonction gamePlay, si didIWin a retourné true, on arrete le jeu. En revanche, 
 //          si elle a retourné false, on redemande un chiffre à l’utilisateur.
 
-function didIWin(number){
-    if(number == 22 ){
+function didIWin(number, numberToGuess){
+    if(number == numberToGuess ){
         alert("Bravo ! Vous avez deviné le nombre")
         return true
-    } else if (number < 22){
+    } else if (number < numberToGuess){
         alert("Plus grand")
         return false
-    } else if (number > 22 ){
+    } else if (number > numberToGuess){
         alert("Plus petit")
         return false
     }
 }
 
+
 function gamePlay(){
-    
+
+    const ANSWER = parseInt(chooseTheAnswer())
     let givenNumber = parseInt(chooseANumber())
-    while (didIWin(givenNumber) != true){
+
+    while (didIWin(givenNumber, ANSWER) != true){
         givenNumber = parseInt(chooseANumber())
     }
 
 }
-
 gamePlay()
