@@ -19,6 +19,8 @@ function chooseTheAnswer(){
 //          Dans la fonction gamePlay, si didIWin a retourné true, on arrete le jeu. En revanche, 
 //          si elle a retourné false, on redemande un chiffre à l’utilisateur.
 
+
+
 function didIWin(number, numberToGuess){
     if(number == numberToGuess ){
         alert("Bravo ! Vous avez deviné le nombre")
