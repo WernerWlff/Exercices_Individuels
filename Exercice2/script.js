@@ -38,14 +38,17 @@ function chooseANumber(){
 }
 */
 
-function chooseTheAnswer(){
-    return prompt("Choisissez le nombre à faire deviner")
+function chooseTheAnswer(limit){
+    limit = prompt("Choisissez un nombre entre 1 et 50")
+    while(limit < 0 || limit > 50){
+        limit = prompt ("j'ai demandé un nombre entre 1 et 50 €_€, réessaye")
+    }
+    return limit
 }
 
-const ANSWER = parseInt(chooseTheAnswer())
-
+let varTamp = 0 // variable pour s'assurer que l'utilisateur rentre bien un nombre entre 1 et 50
+const ANSWER = parseInt(chooseTheAnswer(varTamp))
 let numberOfTry = 0
-
 const nbEssai = document.querySelector("#nbOfTry")
 const appelFonction = document.querySelector("#appelFonction")
 const minus = document.querySelector('#minus')
@@ -60,19 +63,28 @@ function didIWin(number, numberToGuess){
         Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>"
         
     } else if (number < numberToGuess){
-        minus.innerText = number
+        if (number > minus.innerHTML){
+            minus.innerText = number
+            numberOfTry = numberOfTry + 1
+        }
+        else {
+            alert("le nombre proposé n'est pas dans la range")
+        }
 
     } else if (number > numberToGuess){
-        maximum.innerText = number
+        if (number < maximum.innerHTML){
+            maximum.innerText = number
+            numberOfTry = numberOfTry + 1
+        }
+        else {
+            alert("le nombre proposé n'est pas dans la range")
+        }
     }
 }
 
 function gameplay(){
-    
+
     const appelInput = document.querySelector("#test").value
-
-    numberOfTry = numberOfTry + 1
-    nbEssai.innerHTML = `Vous avez réalisé ${numberOfTry} essais`
-
     didIWin(appelInput,ANSWER)
+    nbEssai.innerHTML = `Vous avez réalisé ${numberOfTry} essais`
 }
