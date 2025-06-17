@@ -63,7 +63,7 @@ function didIWin(number, numberToGuess){
         Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>"
         
     } else if (number < numberToGuess){
-        if (number > minus.innerHTML){
+        if (number > minus.innerText){
             minus.innerText = number
             numberOfTry = numberOfTry + 1
         }
@@ -72,7 +72,7 @@ function didIWin(number, numberToGuess){
         }
 
     } else if (number > numberToGuess){
-        if (number < maximum.innerHTML){
+        if (number < maximum.innerText){
             maximum.innerText = number
             numberOfTry = numberOfTry + 1
         }
