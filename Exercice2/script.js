@@ -1,44 +1,16 @@
-//Étape 1 : Créer une fonction qui demande un nombre à l’utilisateur à l’aide d’un prompteur
-//          Stocker sa réponse dans une variable de type adéquat nommée givenNumber
+let varTamp = 0                                                         // will assure that the user selected a number between 1 and 50
+const ANSWER = parseInt(chooseTheAnswer(varTamp))                       // stock the answer to the game
+let numberOfTry = 0                                                     // stock the number of try
 
+const nbEssai = document.querySelector("#nbOfTry")                      // get the text in the element 'nbOfTry' cf.14
+const minus = document.querySelector('#minus')                          // get the text in the element 'minus' cf.18
+const maximum = document.querySelector('#maximum')                      // get the text in the element 'maximum' cf.26
+const appelFonction = document.querySelector("#appelFonction")          // get the text in the element 'appelFonction' cf.29
+const Corps = document.querySelector("body")                            // get all the text of the html page
 
-//Étape 2 : Pour le moment nous allons considérer que le nombre à deviner est 22.
-//          Écrire une fonction qui prend en paramètre givenNumber et qui se nommera didIWin
+appelFonction.addEventListener("click", gameplay)                       // trigger the function gampelay() when the user click on the button
 
-//Étape 3 : Désormais la fonction didIWin devra retourner true si l’utilisateur a trouvé le chiffre, false sinon
-//          Dans la fonction gamePlay, si didIWin a retourné true, on arrete le jeu. En revanche, 
-//          si elle a retourné false, on redemande un chiffre à l’utilisateur.
-
-
-/* l'ancienne version avec while qui fait tout tout seul alors qu'on veut appeler la fonction lorsqu'on clic sur le bouton
-
-function gamePlay(){
-
-    const ANSWER = parseInt(chooseTheAnswer())
-    let numberOfTry = 0
-    let givenNumber = parseInt(chooseANumber())
-    const Try = document.querySelector("#nbOfTry")
-
-    //on s'en sers quand j'aurai changer la putain de boucle en appel de fonction quand je clic sur le bouton
-    //const affichageGlobal = document.querySelector("body")
-    //affichageGlobal.innerHTML = `Bravo Vous avez trouver le nombre 🥳`
-    
-    while (didIWin(givenNumber, ANSWER) != true){
-        numberOfTry = numberOfTry + 1                                     // notre valeur à incrémenter de 1 à chaque appel de la fonction
-        Try.innerHTML = `Vous etes rendu à votre ${numberOfTry}eme essai` // permet d'afficher notre nombre d'essai dans la page html
-        givenNumber = parseInt(chooseANumber())
-    }
-
-}
-*/
-
-/* Obsolète car on se sert de la valeur dans l'input dans l'html
-function chooseANumber(){
-    return prompt("Choisissez un nombre")
-}
-*/
-
-function chooseTheAnswer(limit){
+function chooseTheAnswer(limit){                                        // Will ask the user for the value of ANSWER
     limit = prompt("Choisissez un nombre entre 1 et 50")
     while(limit < 0 || limit > 50){
         limit = prompt ("j'ai demandé un nombre entre 1 et 50 €_€, réessaye")
@@ -46,44 +18,33 @@ function chooseTheAnswer(limit){
     return limit
 }
 
-let varTamp = 0 // variable pour s'assurer que l'utilisateur rentre bien un nombre entre 1 et 50
-const ANSWER = parseInt(chooseTheAnswer(varTamp))
-let numberOfTry = 0
-const nbEssai = document.querySelector("#nbOfTry")
-const appelFonction = document.querySelector("#appelFonction")
-const minus = document.querySelector('#minus')
-const maximum = document.querySelector('#maximum')
-const Corps = document.querySelector("body")
-
-appelFonction.addEventListener("click", gameplay)
-
-function didIWin(number, numberToGuess){
-    if(number == parseInt(numberToGuess)){
+function didIWin(number, numberToGuess){                                // Will show different answer depending of the input from the guesser
+    if(number == parseInt(numberToGuess)){                              // When the guesser find the good number
         Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>"
         
-    } else if (number < numberToGuess){
+    } else if (number < numberToGuess){                                 // When the guesser choose a number lower than the answer
         if (number > parseInt(minus.innerText)){
             minus.innerText = number
             numberOfTry = numberOfTry + 1
         }
-        else {
+        else {                                                          // In case the guesser goes even lower than the range we gave him  
             alert("le nombre proposé n'est pas dans la range")
         }
 
-    } else if (number > parseInt(numberToGuess)){
+    } else if (number > parseInt(numberToGuess)){                       // When the guesser choose a number higher than the answer
         if (number < maximum.innerText){
             maximum.innerText = number
             numberOfTry = numberOfTry + 1
         }
         else {
-            alert("le nombre proposé n'est pas dans la range")
+            alert("le nombre proposé n'est pas dans la range")          // In case the guesser goes even higher than the range we gave him
         }
     }
 }
 
 function gameplay(){
 
-    const appelInput = parseInt(document.querySelector("#test").value) // on mets le parseInt car sinon on comparera des strings dans la fonction
-    didIWin(appelInput,ANSWER)
-    nbEssai.innerHTML = `Vous avez réalisé ${numberOfTry} essais`
+    const appelInput = parseInt(document.querySelector("#test").value)  //we use parseInt because we want to compare 2 numbers and not 2 strings
+    didIWin(appelInput,ANSWER)                                          // we call our function to to the test
+    nbEssai.innerHTML = `Vous avez réalisé ${numberOfTry} essais`       // we display the number of tries the guesser made
 }
