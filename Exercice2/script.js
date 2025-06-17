@@ -55,15 +55,14 @@ const minus = document.querySelector('#minus')
 const maximum = document.querySelector('#maximum')
 const Corps = document.querySelector("body")
 
-
 appelFonction.addEventListener("click", gameplay)
 
 function didIWin(number, numberToGuess){
-    if(number == numberToGuess ){
+    if(number == parseInt(numberToGuess)){
         Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>"
         
     } else if (number < numberToGuess){
-        if (number > minus.innerText){
+        if (number > parseInt(minus.innerText)){
             minus.innerText = number
             numberOfTry = numberOfTry + 1
         }
@@ -71,7 +70,7 @@ function didIWin(number, numberToGuess){
             alert("le nombre proposé n'est pas dans la range")
         }
 
-    } else if (number > numberToGuess){
+    } else if (number > parseInt(numberToGuess)){
         if (number < maximum.innerText){
             maximum.innerText = number
             numberOfTry = numberOfTry + 1
@@ -84,7 +83,7 @@ function didIWin(number, numberToGuess){
 
 function gameplay(){
 
-    const appelInput = document.querySelector("#test").value
+    const appelInput = parseInt(document.querySelector("#test").value) // on mets le parseInt car sinon on comparera des strings dans la fonction
     didIWin(appelInput,ANSWER)
     nbEssai.innerHTML = `Vous avez réalisé ${numberOfTry} essais`
 }
