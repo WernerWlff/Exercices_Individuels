@@ -1,0 +1,10 @@
+body{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(220, 220, 220);
+}
+
+#appelFonction{
+    background-color: white;
+    border-radius: 10%;
+}
