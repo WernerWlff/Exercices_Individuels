@@ -19,12 +19,12 @@ function chooseTheAnswer(limit){                                        // Will 
 }
 
 function didIWin(number, numberToGuess){                                // Will show different answer depending of the input from the guesser
-    if(number == parseInt(numberToGuess)){                              // When the guesser find the good number
+    if(number == numberToGuess){                                        // When the guesser find the good number
         Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>" +
                           "<img src= https://media1.tenor.com/m/CarV7GDhiwQAAAAd/yippee-cat.gif />"
         
     } else if (number < numberToGuess){                                 // When the guesser choose a number lower than the answer
-        if (number > parseInt(minus.innerText)){
+        if (number > minus.innerText){
             minus.innerText = number
             numberOfTry = numberOfTry + 1
         }
@@ -32,7 +32,7 @@ function didIWin(number, numberToGuess){                                // Will 
             alert("le nombre proposé n'est pas dans la range")
         }
 
-    } else if (number > parseInt(numberToGuess)){                       // When the guesser choose a number higher than the answer
+    } else if (number > numberToGuess){                                 // When the guesser choose a number higher than the answer
         if (number < maximum.innerText){
             maximum.innerText = number
             numberOfTry = numberOfTry + 1
