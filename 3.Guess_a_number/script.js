@@ -24,7 +24,7 @@ function didIWin(number, numberToGuess){                                // Will 
                           "<img src= https://media1.tenor.com/m/CarV7GDhiwQAAAAd/yippee-cat.gif />"
         
     } else if (number < numberToGuess){                                 // When the guesser choose a number lower than the answer
-        if (number > minus.innerText){
+        if (number > parseInt(minus.innerText)){                        // we use parseInt to be assured that we compare 2 numbers and not a string and a number
             minus.innerText = number
             numberOfTry = numberOfTry + 1
         }
@@ -33,7 +33,7 @@ function didIWin(number, numberToGuess){                                // Will 
         }
 
     } else if (number > numberToGuess){                                 // When the guesser choose a number higher than the answer
-        if (number < maximum.innerText){
+        if (number < parseInt(maximum.innerText)){                      // we use parseInt to be assured that we compare 2 numbers and not a string and a number
             maximum.innerText = number
             numberOfTry = numberOfTry + 1
         }
