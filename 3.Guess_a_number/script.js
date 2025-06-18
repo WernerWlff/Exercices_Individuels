@@ -20,7 +20,8 @@ function chooseTheAnswer(limit){                                        // Will 
 
 function didIWin(number, numberToGuess){                                // Will show different answer depending of the input from the guesser
     if(number == parseInt(numberToGuess)){                              // When the guesser find the good number
-        Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>"
+        Corps.innerHTML = "<h1> Bravo ! Vous avez deviné le nombre 🥳 </h1>" +
+                          "<img src= https://media1.tenor.com/m/CarV7GDhiwQAAAAd/yippee-cat.gif />"
         
     } else if (number < numberToGuess){                                 // When the guesser choose a number lower than the answer
         if (number > parseInt(minus.innerText)){
