@@ -51,6 +51,11 @@ function askANumberOfMatches(){
         removeMatches(askedMatches)
     }
     
+    else {
+        alert("Vous n'avez pas rentré de nombre, veuillez réessayer")
+        askANumberOfMatches()
+    }
+    
 }
 
 function removeMatches(matchesRemoved){
