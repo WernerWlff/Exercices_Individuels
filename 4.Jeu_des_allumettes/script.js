@@ -7,32 +7,67 @@
 
 //Étape 2 : Demander a l'utilisateur combien d'allumettes il souhaite retirer tant qu’il y a des allumettes dans le tas. 
 //Pour rappel, on a 50 allumettes au départ. --> c'est plus simple de faire l'étape 1 après avoir lu ça pour le coup
+
+//Étape 3 :Limiter le nombre d’allumettes à pouvoir être retirées de 1 à 6.
+//Ajouter a votre jeu la notion de victoire.
+
 //---------------------------------------------------------------------Variables--------------------------------------------------------------//
 
 let numberOfMatches = 50 // We are starting the game with a total of 50 matches
-
+let playerTurn = 1 // nombre de joueur minimum
+let numbersOfPlayers = parseInt(prompt("Combien de joueurs vont jouer ?")) // on demande le nombre de joueurs
 
 //---------------------------------------------------------------------Fonctions--------------------------------------------------------------//
+function startTheGame(){
+    while (!(numberOfMatches <= 0)){
+        multiplayer()
+    }
+}
+
+function multiplayer(){
+    if(playerTurn <= numbersOfPlayers){
+        askANumberOfMatches()
+        playerTurn++
+        
+        if(playerTurn > numbersOfPlayers){
+            playerTurn = 1
+        }
+    }
+}
 
 function askANumberOfMatches(){
-    let askedMatches = parseInt(prompt("Choisissez le nombre d'allumettes à enlever entre 1 et 6"))
+    // demande initiale
+    let askedMatches = parseInt(prompt("Joueur " + playerTurn + ": Choisissez le nombre d'allumettes à enlever entre 1 et 6"))
 
     while (askedMatches < 1 || askedMatches > 6){
+        
         alert("veuillez choisir un nombre entre 1 et 6")
-        askedMatches = parseInt(prompt("Choisissez le nombre d'allumettes à enlever entre 1 et 6"))
+        
+        // demande renvoyée car la première demande n'est pas correcte
+        askedMatches = parseInt(prompt("Joueur " + playerTurn + ": Choisissez le nombre d'allumettes à enlever entre 1 et 6")) 
     }
 
     if(askedMatches >= 1 && askedMatches <= 6){
         removeMatches(askedMatches)
     }
     
-
 }
 
 function removeMatches(matchesRemoved){
     numberOfMatches -= matchesRemoved
 
-    console.log(numberOfMatches) // ptite vérif
+    // on change l'affichage si la pile est vide ou non
+    if(numberOfMatches > 0){
+        alert(`Il ne reste plus que ${numberOfMatches} dans le tas`)
+    }
+
+    isFinished()
 }
 
-askANumberOfMatches()
+function isFinished(){
+    if ( numberOfMatches  <=0 ){
+        alert(`Il n'y a plus d'allumettes dans le tas,Félicitation joueur ${playerTurn} vous avez gagné le jeu des allumettes`)
+    }
+}
+
+startTheGame()
