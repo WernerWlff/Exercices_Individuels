@@ -1,3 +1,3 @@
-Dans les 3 premiers dossiers, j'ai changé leurs noms et supprimer les anciens, on ne voit donc pas les anciens commit pour les étapes
+Ce dossier contient tout les exercices individuels que j'ai pu réalisé à Ada
 
-par exemple, dans l'exercice 3.Guess a number, on ne voit pas le commit des étapes même si elle ont bien été effectuées.
+On ne peut pas voir l'ordre des commits sur les 3 premiers exercices car en les renommants, ça à supprimé mes commits
