@@ -3,12 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>4.Jeu des allumettes</title>
+        <title>Exercice Individuel 4 : Jeu des allumettes</title>
         <link rel="stylesheet" href="style.css">
-        <script defer src="script.js"></script>
     </head>
 
     <body>
-        
+        <div id="accueil">
+            <h1>Jeu des allumettes fait par votre humble serviteur (moi) 🐅 </h1>
+            <h2>Le but de ce jeu est d'être celui/celle qui enlèvera la derniere allumette de la pile</h2>
+            <h2 id="allumettes">Vous pouvez en retirer entre 1 et 6 lors de votre tour, amusez vous bien</h2>
+            <hr>
+        </div>
+
+        <div>
+            <input id="nbARetirer" type="number" min="1" max="6">
+        </div>
+
+        <div>
+            <button id = "appelFonction">
+                Valider
+            </button>
+        </div>
+
+        <div>
+            <p id="nbRestantes">
+                Il nous reste 50 allumettes dans la pile
+            </p>
+        </div>
+
+    <script defer src="script.js"></script>
     </body>
 </html>
