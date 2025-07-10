@@ -39,7 +39,7 @@ function encode(){
 
 //On récupère notre message
 function getMorseCharacterList(morseToChange){
-    let morseToArray = morseToChange.split('')
+    let morseToArray = morseToChange.split(' ')
     return morseToArray
 }
 
@@ -55,8 +55,8 @@ function decode(){
 
     //on va transformer notre code en morse en lettres
     for(let i = 0; i < traductionInLatin.length; i++){
+        
         traductionInLatin[i] = translateMorseCharacter(traductionInLatin[i])
-        console.log(traductionInLatin[i])
     }
 
     for(let j = 0; j < traductionInLatin.length; j++){
