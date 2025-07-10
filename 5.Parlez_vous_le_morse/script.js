@@ -4,8 +4,17 @@ import { morseToLatin } from "./dictionnaire.js"
 //-------------------------------------------------------------------DOM---------------------------------------------------------------------//
 const LATINSIDE = document.querySelector('#latinSide')
 const MORSESIDE = document.querySelector('#morseSide')
-const LATINTEXT = document.getElementById('latinText')
-const MORSETEXT = document.getElementById('morseText')
+
+const LATINTEXT = document.getElementById('latinText') // notre textarea du latin
+const MORSETEXT = document.getElementById('morseText') // notre textarea du morse
+
+const TOLATIN = document.getElementById('toLatin') // bouton pour transformer en morse
+const TOMORSE = document.getElementById('toMorse') // bouton pour transformer en latin
+
+//------------------------------------------------------------addEventListener--------------------------------------------------------------//
+
+TOMORSE.addEventListener("click", encode)
+TOLATIN.addEventListener("click", decode)
 
 //------------------------------------------------------------Latin --> Morse----------------------------------------------------------------//
 
@@ -20,23 +29,21 @@ function translateLatinCharacter(letter){
 }
 
 function encode(){
-    let message = prompt('Saissisez le message que vous voulez traduire en morse')
+    let message = LATINTEXT.value
     let traductionInMorse = getLatinCharacterList(message)
-    //console.log(traductionInMorse) //---> à ce moment la, on récupère le tableau de notre message
     let messageInMorse = ""
 
     //on transforme nos lettres
     for(let i = 0; i < traductionInMorse.length; i++){
         traductionInMorse[i] = translateLatinCharacter(traductionInMorse[i])
-        console.log(traductionInMorse[i])
     }
 
     //on écrit dans la variable message a la place
     for(let i = 0; i < traductionInMorse.length; i++){
-        messageInMorse = messageInMorse + traductionInMorse[i]
+        messageInMorse = messageInMorse + " " + traductionInMorse[i]
     }
 
-    console.log(messageInMorse)
+    MORSETEXT.innerText = messageInMorse
 
 }
 
@@ -55,10 +62,15 @@ function translateMorseCharacter(symbols){
 }
 
 function decode(){
-    let morseMessage = prompt('Saissisez le message en morse que vous voulez traduire en latin')
+    let morseMessage = MORSETEXT.value
     let traductionInLatin = getMorseCharacterList(morseMessage)
-    let messageInLatin = ""
+    traductionInLatin = traductionInLatin.splice(1) // permet de retirer le premier élément de notre tableau qui est vide
+    
+    let messageInLatin = "" // variable tampon qui va permettre de garder notre phrase traduite
+    
+    console.log(traductionInLatin)
 
+    
     //on va transformer notre code en morse en lettres
     for(let i = 0; i < traductionInLatin.length; i++){
         
@@ -67,10 +79,8 @@ function decode(){
 
     for(let j = 0; j < traductionInLatin.length; j++){
         messageInLatin = messageInLatin + traductionInLatin[j]
+        console.log(messageInLatin)
     }
 
-    console.log(messageInLatin)
-
+    LATINTEXT.innerText = messageInLatin
 }
-encode()
-decode()
