@@ -3,10 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>5.Parlez vous le morse</title>
+        <title>Exercice individuel 5.Parlez vous le morse</title>
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
+        <h1> Traducteur Latin - Morse</h1>
+        <h2>Ce traducteur peut traduire votre message en latin et en morse</h2>
+        <hr>
+
+        <div id="container">
+            <div id="latinSide">
+                <textarea id="latinText" class="textBox"></textarea>
+                <button id="toMorse" class="tradButton">
+                    Valider
+                </button>
+            </div>
+
+            <div id="morseSide">
+                <textarea id="morseText" class="textBox"></textarea>
+                <button id="toLatin" class="tradButton">
+                    Valider
+                </button>
+            </div>
+        </div>
+
+        <img id="phoque" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Walrus45.JPG/250px-Walrus45.JPG" alt="photo"/>
+        <img id="logo" src="https://cdn.welcometothejungle.co/uploads/website/logo/4277/155112/ada-tech-school.png" alt="logo" />
+        
         <script defer type="module" src="script.js"></script>
     </body>
 </html>

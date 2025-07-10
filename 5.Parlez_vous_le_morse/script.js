@@ -1,6 +1,14 @@
 import { latinToMorse } from "./dictionnaire.js"
 import { morseToLatin } from "./dictionnaire.js"
 
+//-------------------------------------------------------------------DOM---------------------------------------------------------------------//
+const LATINSIDE = document.querySelector('#latinSide')
+const MORSESIDE = document.querySelector('#morseSide')
+const LATINTEXT = document.getElementById('latinText')
+const MORSETEXT = document.getElementById('morseText')
+
+//------------------------------------------------------------Latin --> Morse----------------------------------------------------------------//
+
 function getLatinCharacterList(messageToChange){
     let stringToArray = messageToChange.split('')
     return stringToArray // tableau de notre message
@@ -32,10 +40,8 @@ function encode(){
 
 }
 
-//encode()
 
-
-//------------------------------------------------------------Morse --> String-----------------------------------------------------//
+//------------------------------------------------------------Morse --> Latin----------------------------------------------------------------//
 
 //On récupère notre message
 function getMorseCharacterList(morseToChange){
@@ -66,5 +72,5 @@ function decode(){
     console.log(messageInLatin)
 
 }
-
+encode()
 decode()
