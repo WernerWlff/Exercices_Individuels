@@ -5,6 +5,10 @@ body{
     background: linear-gradient(to right,#073139, #00343f, #114a54 );
 }
 
+.infos{
+    font-size: 1rem;
+}
+
 #container{
     display: flex;
     align-items: center;
