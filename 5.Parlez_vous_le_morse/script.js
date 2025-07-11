@@ -29,6 +29,7 @@ function translateLatinCharacter(letter){
 }
 
 function encode(){
+    MORSETEXT.innerText = ""
     let message = LATINTEXT.value
     let traductionInMorse = getLatinCharacterList(message)
     let messageInMorse = ""
@@ -40,10 +41,11 @@ function encode(){
 
     //on écrit dans la variable message a la place
     for(let i = 0; i < traductionInMorse.length; i++){
+
         messageInMorse = messageInMorse + " " + traductionInMorse[i]
     }
 
-    MORSETEXT.innerText = messageInMorse
+    MORSETEXT.value = messageInMorse.slice(1)
 
 }
 
@@ -62,7 +64,8 @@ function translateMorseCharacter(symbols){
 }
 
 function decode(){
-    let morseMessage = MORSETEXT.value
+    LATINTEXT.innerText = ""
+    let morseMessage = " " + MORSETEXT.value
     let traductionInLatin = getMorseCharacterList(morseMessage)
     traductionInLatin = traductionInLatin.splice(1) // permet de retirer le premier élément de notre tableau qui est vide
     
@@ -79,8 +82,7 @@ function decode(){
 
     for(let j = 0; j < traductionInLatin.length; j++){
         messageInLatin = messageInLatin + traductionInLatin[j]
-        console.log(messageInLatin)
     }
 
-    LATINTEXT.innerText = messageInLatin
+    LATINTEXT.value = messageInLatin
 }
