@@ -1,89 +1,101 @@
-function isValidDate(date){
-    let arrayOfString = date.split('/') // sépare notre date en tableau de string
+function isValidDate(date) {
+  let arrayOfString = date.split("/"); // sépare notre date en tableau de string
 
-    let dd = arrayOfString[0]
-    let mm = arrayOfString[1]
-    let yyyy = arrayOfString[2]
+  let dd = arrayOfString[0];
+  let mm = arrayOfString[1];
+  let yyyy = arrayOfString[2];
 
-
-    if (yyyy >= 1000 && yyyy <= 9999 && maxDaysInMonth(dd,mm) === true){
-        console.log("La date entrée est valide, on va pouvoir vérifier si c'est un palindrome")
-        isPalindrome(dd,mm,yyyy) // à développer
-    }
-
-    else {
-        console.log("La date n'est pas valide car l'année n'est pas prise en charge")
-    }
-
+  if (yyyy >= 1000 && yyyy <= 9999 && maxDaysInMonth(dd, mm) === true) {
+    isPalindrome(dd, mm, yyyy);
+  }
 }
 
-function maxDaysInMonth(dayInMonth, month){
+function maxDaysInMonth(dayInMonth, month) {
+  // on définit nos mois pour savoir combien de jours on a dans notre mois
+  const MONTH31 = ["01", "03", "05", "07", "08", "10", "12"];
+  const MONTH30 = ["04", "06", "09", "11"];
+  const FEVRIER = ["02"];
 
-    // on définit nos mois pour savoir combien de jours on a dans notre mois
-    const MONTH31 = ["01", "03", "05", "07", "08", "10", "12"]
-    const MONTH30 = ["04", "06", "09", "11"]
-    const FEVRIER = ["02"]
-
-    if(month >= "01" && month <= "12"){
-        // c'est des conditions à part
-        if(dayInMonth >= "01" && dayInMonth <= "28"){
-                if(FEVRIER.includes(month)){
-                    return true
-                }
-        }
-
-        // c'est des conditions à part
-        if(dayInMonth >= "01" && dayInMonth <= "31"){
-            if(MONTH31.includes(month)){ // on vérifie que c'est bien un mois de 31 jours
-                return true
-            }
-        }
-
-        // c'est des conditions à part
-        if(dayInMonth >= "01" && dayInMonth <= "30"){
-                if(MONTH30.includes(month)){ // on vérifie que c'est bien un mois de 30 jours
-                    return true
-                }
-        }
-
-        console.log("la date n'est pas valide car le jour n'est pas bon")
-        return false
+  if (month >= "01" && month <= "12") {
+    // c'est des conditions à part
+    if (dayInMonth >= "01" && dayInMonth <= "28") {
+      if (FEVRIER.includes(month)) {
+        return true;
+      }
     }
 
-    else{
-        console.log("la date n'est pas valide car le mois n'est pas bon")
-        return false
+    // c'est des conditions à part
+    if (dayInMonth >= "01" && dayInMonth <= "31") {
+      if (MONTH31.includes(month)) {
+        // on vérifie que c'est bien un mois de 31 jours
+        return true;
+      }
     }
 
+    // c'est des conditions à part
+    if (dayInMonth >= "01" && dayInMonth <= "30") {
+      if (MONTH30.includes(month)) {
+        // on vérifie que c'est bien un mois de 30 jours
+        return true;
+      }
+    }
+    return false;
+  } else {
+    return false;
+  }
 }
 
-function isPalindrome(day, month, year){
+function isPalindrome(day, month, year) {
+  let reverseDate = "";
+  let datePalindrome = day + month + year;
 
-    let reverseDate = ""
-    let datePalindrome = day + month + year
+  let arrayDate = datePalindrome.split("");
 
-    let arrayDate = datePalindrome.split('')
+  for (i = arrayDate.length - 1; i >= 0; i--) {
+    reverseDate += arrayDate[i];
+  }
 
-    for(i = arrayDate.length - 1; i >= 0 ; i--){
-        reverseDate += arrayDate[i]
-    }
-
-    if (datePalindrome === reverseDate){
-        console.log("la date " + day + "/" + month + "/" + year + " est bien un palindrome")
-    }
-    else {
-        console.log("La date donnée n'est pas un palindrome")
-    }
-
+  if (datePalindrome === reverseDate) {
+    return true;
+  }
 }
-// TEST TECHNIQUES
-isValidDate("31/01/2001") // Vraie --> Pas palindrome
-isValidDate("11/02/2011") // Vraie --> Palindrome
-// isValidDate("30/11/2001") // Vraie --> Pas palindrome
-// isValidDate("28/02/2001") // Vraie --> Pas palindrome
-// isValidDate("31/02/2001") // Faux --> date impossible ( jour )
-// isValidDate("45/07/2001") // Faux --> date impossible ( jour )
-// isValidDate("31/11/2001") // Faux --> date impossible ( jour )
-// isValidDate("01/01/01") // faux --> date impossible ( année )
-// isValidDate("01/14/100000") // faux --> date impossible ( année )
-// isValidDate("15/14/2001") // faux --> date impossible ( mois )
+
+function getNextPalindrome(numOfPal) {
+  //créer un élement date
+  const dateToCompare = new Date();
+
+  let currentDay = String(dateToCompare.getDate());
+  let currentMonth = String(dateToCompare.getMonth() + 1);
+  let currentYear = String(dateToCompare.getFullYear());
+
+  let palindromeFind = 0; // on va l'incrémenter quand on trouvera un palindrome --> permet de savoir combien de palindrome on a trouvés
+
+  console.log(
+    `Voici les ${numOfPal} prochaines palindromes à venir à partir d'aujourd'hui :`
+  );
+
+  while (palindromeFind < numOfPal) {
+    if (currentDay.length === 1) {
+      currentDay = String(currentDay.padStart(2, 0));
+    }
+
+    if (currentMonth.length === 1) {
+      currentMonth = String(currentMonth.padStart(2, 0));
+    }
+
+    if (isPalindrome(currentDay, currentMonth, currentYear) === true) {
+      console.log(
+        "la date " + currentDay + "/" + currentMonth + "/" + currentYear + " est un palindrome"
+      );
+      palindromeFind++;
+    }
+
+    dateToCompare.setDate(dateToCompare.getDate() + 1);
+
+    currentDay = String(dateToCompare.getDate());
+    currentMonth = String(dateToCompare.getMonth() + 1);
+    currentYear = String(dateToCompare.getFullYear());
+  }
+}
+
+getNextPalindrome(8);
