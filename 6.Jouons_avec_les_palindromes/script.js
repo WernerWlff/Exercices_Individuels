@@ -4,9 +4,20 @@ function isValidDate(date) {
   let dd = arrayOfString[0];
   let mm = arrayOfString[1];
   let yyyy = arrayOfString[2];
+  let dateWithoutTab = String(dd + mm + yyyy)
 
   if (yyyy >= 1000 && yyyy <= 9999 && maxDaysInMonth(dd, mm) === true) {
-    isPalindrome(dd, mm, yyyy);
+    if(isPalindrome(dateWithoutTab)=== true){
+      return true
+    }
+
+    else{
+      return false
+    }
+  }
+
+  else{
+    return false
   }
 }
 
@@ -15,9 +26,9 @@ function maxDaysInMonth(dayInMonth, month) {
   const MONTH31 = ["01", "03", "05", "07", "08", "10", "12"];
   const MONTH30 = ["04", "06", "09", "11"];
   const FEVRIER = ["02"];
-
+  
+  // c'est des conditions à part
   if (month >= "01" && month <= "12") {
-    // c'est des conditions à part
     if (dayInMonth >= "01" && dayInMonth <= "28") {
       if (FEVRIER.includes(month)) {
         return true;
@@ -40,27 +51,39 @@ function maxDaysInMonth(dayInMonth, month) {
       }
     }
     return false;
-  } else {
+  }
+  
+  else {
     return false;
   }
 }
 
-function isPalindrome(day, month, year) {
-  let reverseDate = "";
-  let datePalindrome = day + month + year;
+function isPalindrome(string) {
+  let reverseString = "";
 
-  let arrayDate = datePalindrome.split("");
-
-  for (i = arrayDate.length - 1; i >= 0; i--) {
-    reverseDate += arrayDate[i];
+  for (i = string.length - 1; i >= 0; i--) {
+    reverseString += string[i];
   }
 
-  if (datePalindrome === reverseDate) {
+  if (string === reverseString) {
     return true;
+  }
+
+  else {
+    return false;
   }
 }
 
-function getNextPalindrome(numOfPal) {
+function isDatePalindrome(day, month, year) {
+  let datePalindrome = day + "/" + month + "/" + year;
+
+    if(isValidDate(datePalindrome) === true){
+      return true
+    }
+}
+
+function getNextPalindrome(numOfPalToFind) {
+
   //créer un élement date
   const dateToCompare = new Date();
 
@@ -68,13 +91,11 @@ function getNextPalindrome(numOfPal) {
   let currentMonth = String(dateToCompare.getMonth() + 1);
   let currentYear = String(dateToCompare.getFullYear());
 
-  let palindromeFind = 0; // on va l'incrémenter quand on trouvera un palindrome --> permet de savoir combien de palindrome on a trouvés
+  let palindromeFound = 0; // on va l'incrémenter quand on trouvera un palindrome --> permet de savoir combien de palindrome on a trouvés
 
-  console.log(
-    `Voici les ${numOfPal} prochaines palindromes à venir à partir d'aujourd'hui :`
-  );
+  console.log(`Voici les ${numOfPalToFind} prochaines palindromes à venir à partir d'aujourd'hui :`);
 
-  while (palindromeFind < numOfPal) {
+  while (palindromeFound < numOfPalToFind) {
     if (currentDay.length === 1) {
       currentDay = String(currentDay.padStart(2, 0));
     }
@@ -83,11 +104,9 @@ function getNextPalindrome(numOfPal) {
       currentMonth = String(currentMonth.padStart(2, 0));
     }
 
-    if (isPalindrome(currentDay, currentMonth, currentYear) === true) {
-      console.log(
-        "la date " + currentDay + "/" + currentMonth + "/" + currentYear + " est un palindrome"
-      );
-      palindromeFind++;
+    if (isDatePalindrome(currentDay, currentMonth, currentYear) === true) {
+      console.log("la date " + currentDay + "/" + currentMonth + "/" + currentYear + " est un palindrome");
+      palindromeFound++;
     }
 
     dateToCompare.setDate(dateToCompare.getDate() + 1);
@@ -99,3 +118,4 @@ function getNextPalindrome(numOfPal) {
 }
 
 getNextPalindrome(8);
+console.log(isPalindrome("kayak"))
