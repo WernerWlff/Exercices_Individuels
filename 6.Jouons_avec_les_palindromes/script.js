@@ -4,16 +4,9 @@ function isValidDate(date) {
   let dd = arrayOfString[0];
   let mm = arrayOfString[1];
   let yyyy = arrayOfString[2];
-  let dateWithoutTab = String(dd + mm + yyyy)
 
-  if (yyyy >= 1000 && yyyy <= 9999 && maxDaysInMonth(dd, mm) === true) {
-    if(isPalindrome(dateWithoutTab)=== true){
-      return true
-    }
-
-    else{
-      return false
-    }
+  if (yyyy >= 1000 && yyyy <= 9999 && maxDaysInMonth(dd, mm, yyyy) === true) {
+    return true
   }
 
   else{
@@ -21,7 +14,8 @@ function isValidDate(date) {
   }
 }
 
-function maxDaysInMonth(dayInMonth, month) {
+
+function maxDaysInMonth(dayInMonth, month, year) {
   // on définit nos mois pour savoir combien de jours on a dans notre mois
   const MONTH31 = ["01", "03", "05", "07", "08", "10", "12"];
   const MONTH30 = ["04", "06", "09", "11"];
@@ -49,6 +43,12 @@ function maxDaysInMonth(dayInMonth, month) {
         // on vérifie que c'est bien un mois de 30 jours
         return true;
       }
+    }
+
+    // on vérifie si c'est une année bissextile 
+    if(month === "02" && dayInMonth === "29" && year % 4 == 0){
+      return true
+
     }
     return false;
   }
@@ -78,7 +78,13 @@ function isDatePalindrome(day, month, year) {
   let datePalindrome = day + "/" + month + "/" + year;
 
     if(isValidDate(datePalindrome) === true){
-      return true
+      datePalindrome = day + month + year
+      if(isPalindrome(datePalindrome)=== true){
+        return true
+      }
+    }
+    else {
+      return false
     }
 }
 
@@ -118,4 +124,5 @@ function getNextPalindrome(numOfPalToFind) {
 }
 
 getNextPalindrome(8);
-console.log(isPalindrome("kayak"))
+// console.log(isPalindrome("kayak"))
+// console.log(isValidDate("29/02/2091"))
