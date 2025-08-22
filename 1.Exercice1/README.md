@@ -9,5 +9,4 @@ Exercice simple pour se familiariser avec les commandes Git de base.
 ## Utilisation
 
 1. git clone
-2. Lancer le programme depuis le fichier index.html
-3. Vérifiez les commits réalisés avec la commande git log.
+2. Vérifiez les commits réalisés avec la commande git log.
