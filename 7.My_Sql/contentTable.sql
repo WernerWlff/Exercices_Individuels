@@ -81,4 +81,3 @@ GROUP BY signed_at;
 SELECT COUNT(*) AS volume FROM edusign
 JOIN users ON edusign.user_id = users.user_id
 WHERE firstname = 'Bella';
-
