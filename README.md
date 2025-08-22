@@ -21,7 +21,7 @@ Chaque projet est autonome et possède son propre README pour plus de détails.
 |:----------:|:----------------|
 | [Exercice 1](./1.Exercice1) | Introduction aux commandes Git |
 | [Bonjour JavaScript](./2.bonjour_javascript) | Introductions à la création de programme avec Html et JavaScript |
-| [Guess a Number](./3.Guess_a_number) | Jeu ou il faut trouver le nombre choisi aléatoirement |
+| [Guess a Number](./3.Guess_a_number) | Jeu ou il faut trouver le nombre choisi aléatoirement par l'ordinateur |
 | [Jeu des Allumettes](./4.Jeu_des_allumettes) | Jeu ou le but est d'être la personne à retirer la dernière allumette |
 | [Parlez-vous morse ?](./5.Parlez_vous_le_morse) | Un convertisseur qui permet de transcrire un message en morse et inversement |
 | [Palindromes](./6.Jouons_avec_les_palindromes) | Permet de vérifier si une date ou un mot est un palindrome |
