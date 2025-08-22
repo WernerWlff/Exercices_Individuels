@@ -139,6 +139,6 @@ function isPalindrome(string) {
 
 
 getNextPalindrome(8);
-// console.log(isPalindrome("kayak"))
-// console.log(isPalindrome("yakak"))
-// console.log(isValidDate("29/02/2091"))
+console.log(isPalindrome("kayak"))
+console.log(isPalindrome("yakak"))
+console.log(isValidDate("29/02/2091"))
