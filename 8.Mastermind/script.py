@@ -23,15 +23,17 @@ def isCorrect(arrayOfColors) :
 
 def endTheGame() :
     global nbOfTry
-    while nbOfTry < 12 and isSamecombination == False :
+    global isSamecombination
+    if nbOfTry < 12 and isSamecombination == False : # how many tries left 
         print(f"wrong, {12 - nbOfTry} tries left")
         askColor()
-    if nbOfTry == 12 :
-        print("you don't have any tries left, you lost the game of mastermind")
-    else:
-        print("Congrats, you won the game of mastermind")
+
+    elif nbOfTry < 12 and isSamecombination == True : # We win
+        print("Congrats, you won the game of Mastermind")
         return
-
-
+    
+    elif nbOfTry >= 12 and isSamecombination == False : # We loose
+        print("you don't have any tries left, you lost the game of mastermind")
+        return
 
 askColor()
