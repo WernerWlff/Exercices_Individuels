@@ -1,27 +1,51 @@
-colors = ["blue", "red", "yellow", "green"]
+colorsPossible = ["blue", "red", "yellow", "green"]
 colorsToGuess = ["blue", "yellow"]
 nbOfTry = 0
 isSamecombination = False
 userColorsArray = ''
 
+
+def startTheGame() :
+    print(f"Welcome to the game of mastermind, the goal is to find the correct combination of colors, here is the list of all the colors that you can choose : {colorsPossible}.")
+    askColor()
+
 def askColor () :
     global nbOfTry
     global userColorsArray
+    global colorsPossible
 
     userColors = input('choose your colors, please keep them separated with a "/" : ')
     userColorsArray = userColors.split('/')
-    if nbOfTry <= 12 :
-        isCorrect(userColorsArray)
+    isColorValid()
 
+
+def isColorValid() :
+    global userColorsArray
+    global colorsPossible
+    global colorsToGuess
+
+    if len(userColorsArray) != len(colorsToGuess) :
+        print(f"You have to enter {len(colorsToGuess)} colors, please try again")
+        askColor()
+        return
+
+    for color in userColorsArray :
+        if color not in colorsPossible :
+            print(f"the color {color} is not a choice, please retry")
+            askColor()
+            return
+        
+    isCorrect(userColorsArray)
 
 def isCorrect(arrayOfColors) :
     global nbOfTry
     global isSamecombination
+    global colorsToGuess
 
     if arrayOfColors == colorsToGuess :
         isSamecombination = True
         endTheGame()
-    else  :
+    else :
         nbOfTry = nbOfTry + 1
         endTheGame()
 
@@ -31,7 +55,7 @@ def placement(arrayOfColorsGiven) :
     goodPlacement = 0
 
     #Well placed
-    for i in range(len(arrayOfColorsGiven)) :
+    for i in range(min(len(arrayOfColorsGiven), len(colorsToGuess))) :
         if(arrayOfColorsGiven[i] == colorsToGuess[i]) :
             goodPlacement += 1
 
@@ -59,8 +83,8 @@ def endTheGame() :
     global userColorsArray
 
     if nbOfTry < 12 and isSamecombination == False : # how many tries left 
-        print(f"wrong, {12 - nbOfTry} tries left")
         placement(userColorsArray)
+        print(f"{12 - nbOfTry} tries left")
         askColor()
 
     elif nbOfTry < 12 and isSamecombination == True : # We win
@@ -71,4 +95,4 @@ def endTheGame() :
         print("you don't have any tries left, you lost the game of mastermind")
         return
 
-askColor()
+startTheGame()
