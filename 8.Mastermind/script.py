@@ -1,12 +1,15 @@
-colorsPossible = ["blue", "red", "yellow", "green"]
-colorsToGuess = ["blue", "yellow"]
+import random
+colorsPossible = ["blue", "red", "yellow", "green", "pink", "orange", "white", "purple"]
+colorsToGuess = []
 nbOfTry = 0
 isSamecombination = False
 userColorsArray = ''
 
+for i in range(4) :
+    colorsToGuess.append(random.choice(colorsPossible))
 
 def startTheGame() :
-    print(f"Welcome to the game of mastermind, the goal is to find the correct combination of colors, here is the list of all the colors that you can choose : {colorsPossible}.")
+    print(f"Welcome to the game of mastermind, to win the game, you need to find the correct combination of {len(colorsToGuess)} colors. \nHere is the list of all the colors that you can choose : {colorsPossible}.")
     askColor()
 
 def askColor () :
