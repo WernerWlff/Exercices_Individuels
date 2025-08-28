@@ -11,6 +11,7 @@ Bienvenue sur Repo Github regroupant les différents exercices individuels que j
  - CSS
  - JavaScript
  - SQL via SQLite 
+ - Python
 
 ## Projets
 
@@ -26,7 +27,7 @@ Chaque projet est autonome et possède son propre README pour plus de détails.
 | [Parlez-vous morse ?](./5.Parlez_vous_le_morse) | Un convertisseur qui permet de transcrire un message en morse et inversement |
 | [Palindromes](./6.Jouons_avec_les_palindromes) | Permet de vérifier si une date ou un mot est un palindrome |
 | [SQL / SQLite](./7.My_Sql) | Introductions à SQL via la manipulation de SQLite |
-
+| [SQL / SQLite](./8.Mastermind) | Introductions à Python et recréation du mastermind |
 
 ## Compétences mises en pratiques
 - Logique de programmation en JavaScript
