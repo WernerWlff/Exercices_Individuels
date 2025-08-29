@@ -13,9 +13,16 @@ Ce projet consiste à récréer le jeu du Mastermind, grand classique des jeux d
 - Génération aléatoire d'une combinaison secrète
 - Suivi du nombres de tentatives par l'utilisateur
 - Indications du placement des couleurs et retour différent en fonction du placement des couleurs
+- Interface graphique fonctionnelle qui permet de jouer au jeu sans passer par le terminal python
+
+## Apercu
+
+![Mastermind](images/Mastermind.png)
 
 ## Instructions
 
 1. git clone
-2. Lancer le programme depuis un éditeur de code python
-2. vous pouvez également le lancer depuis un terminal bash en vous placant dans le dossier et en faisant la commande python mastermind.py
+2. Installer python ( la derniere version ) depuis le microsoft Store : [python_3.13](https://apps.microsoft.com/detail/9pnrbtzxmb4z?hl=fr-FR&gl=FR)
+3. Ouvrer votre logiciel d'édition ( python ou Visual Studio Code) et sélectionner votre version installé de python du microsoft comme votre interpreter 
+4. Installer le module customtkinter en faisant la commande : pip -install customtkinter depuis un terminal bash
+4. Lancer le programme depuis votre logiciel
