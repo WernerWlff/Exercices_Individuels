@@ -1,7 +1,7 @@
 
 # Exercices individuels
 
-Bienvenue sur Repo Github regroupant les différents exercices individuels que j'ai pu faire lors des mes 9 mois de formation à Ada Tech School entre Mai 2025 et Février 2026.
+Bienvenue sur ce Repo Github regroupant les différents exercices individuels que j'ai pu faire lors des mes 9 mois de formation à Ada Tech School entre Mai 2025 et Février 2026.
 
 
 
@@ -40,5 +40,6 @@ Chaque projet est autonome et possède son propre README pour plus de détails.
 - Chaque projet se situe dans un dossier séparé.
 - Un Readme individuel se trouve dans chaque dossier de projet pour expliquer comment fonctionne le programme.
 - Pour tester un projet, vous pouvez télécharger un dossier et suivre les informations présents dans le Readme du dossier.
+
 
 
