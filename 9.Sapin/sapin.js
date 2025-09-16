@@ -1,11 +1,32 @@
 let finalTree = ""
 
-function afficherPointeSapin(largeur){
-    finalTree = " ".repeat(largeur) + "+" + "\n"
-    for (let i = 0; i < largeur; i++){
-        finalTree += " ".repeat(largeur - i - 1) + "/" + "*".repeat(i) + "|" + "*".repeat(i) + "\\" + "\n"
+function afficherEtage(hauteur, pointe_offset, espacement){
+    if(finalTree === ""){
+        finalTree += " ".repeat(espacement) + " ".repeat(pointe_offset) + " ".repeat(hauteur) + '+' + '\n'
+    }
+    for(let i = 0; i < hauteur; i++){
+        finalTree += " ".repeat(espacement) +  " ".repeat(hauteur - i - 1) + "/" + "*".repeat(i + pointe_offset) + "|" + "*".repeat(i + pointe_offset) + "\\" + "\n"
+    }
+
+return finalTree
+}
+
+function afficherRectangle(hauteur, largeur){
+    for(let i = 0; i < hauteur; i++){
+    }
+}
+
+function afficherSapin(etages, hauteur_etage){
+    let j = 0;
+    for(let i = etages; i > 0; i--){
+        afficherEtage(hauteur_etage, j, i);
+        j++
+    }
+    for(let i = 0; i < 3; i++){
+        finalTree += " ".repeat(j) + " ".repeat(hauteur_etage - 1)  + "###" + "\n"
     }
     console.log(finalTree)
 }
 
-afficherPointeSapin(5)
+
+afficherSapin(3,3)
